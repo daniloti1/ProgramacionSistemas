@@ -1,3 +1,8 @@
+#include <stdlib.h>
+#include <string.h>
+#include "codificacion.h"
+#define TAMANO 1024
+
 char* cifrar(char cadena[TAMANO], int n){
         char* cifradoFinal=malloc(sizeof(char)*TAMANO);
         char cifrado[TAMANO];
