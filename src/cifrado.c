@@ -25,3 +25,11 @@ char* cifrar(char cadena[TAMANO], int n){
         strcpy(cifradoFinal,cifrado);
         return (char *)cifradoFinal;
 }
+
+char* cifradoAutollave(char* mensaje,char* llave){
+	return "";
+}
+
+char* cifradoContraseña(char* mensaje,char* llave){
+	return "";
+}
