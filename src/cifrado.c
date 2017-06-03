@@ -30,6 +30,6 @@ char* cifradoAutollave(char* mensaje,char* llave){
 	return "";
 }
 
-char* cifradoContraseña(char* mensaje,char* llave){
+char* cifradoContrasena(char* mensaje,char* llave){
 	return "";
 }
