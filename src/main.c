@@ -35,12 +35,18 @@ int main(int argc, char **argv){
 	printf("Ingrese la clave numerica: \n");
 	int num;
 	scanf("%d", &num);
+	char llave[1024]={0};
+	printf("Introduce llave: ");
+	scanf("%s", llave);
+
 	char* mensajeCifrado;
 	mensajeCifrado=cifrar(cadenaCode,num);
 	printf("Mensaje cifrado: %s \n", mensajeCifrado);
 
 	printf("Mensaje cifrado en Morse: ");
+
 	morse(mensajeCifrado);
+	cifradoAutollave(cadenaCode,llave);
 
 	return 0;
 }
