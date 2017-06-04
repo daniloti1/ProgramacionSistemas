@@ -51,18 +51,30 @@ int main(int argc, char **argv){
 		morse(mensajeCifrado);
 	}
 	if (strcmp(tipo,"A")==0){
-		printf("Cifrado ciclico\n");
+		printf("Cifrado por autollave\n");
 		printf("Ingrese el mensaje a cifrar: \n");
 		char cadenaCode[TAMANO];
 		scanf("%d", tipo);
 		scanf("%[a-z A-Z0-9.,@_|°!#$%&\"\\/()*={}]", cadenaCode);
 		char llave[1024]={0};
-		printf("%s \nIntroduce llave: ",cadenaCode);
+		printf("Introduce llave: ");
 		
 		scanf("%s", llave);
 		cifradoAutollave(cadenaCode,llave);
 	}
-
+	if (strcmp(tipo,"P")==0){
+		printf("Cifrado por contraseña\n");
+		printf("Ingrese el mensaje a cifrar: \n");
+		char cadenaCode[TAMANO];
+		scanf("%d", tipo);
+		scanf("%[a-z A-Z0-9.,@_|°!#$%&\"\\/()*={}]", cadenaCode);
+		char llave[1024]={0};
+		printf("Introduce llave: ");
+		
+		scanf("%s", llave);
+		cifradoContrasena(cadenaCode,llave);
+		
+	}
 	return 0;
 }
 

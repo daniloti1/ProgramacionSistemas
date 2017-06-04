@@ -62,5 +62,96 @@ char* cifradoAutollave(char* mensaje,char* llave){
 }
 
 char* cifradoContrasena(char* mensaje,char* llave){
-	return "";
+	int i,j,tam_mensaje,tam_llave;
+	char cifrado[1024]={0};
+	tam_llave=strlen(llave);
+	tam_mensaje=strlen(mensaje);
+	char nueva_llave[1024];
+	int A[tam_mensaje];
+	int B[tam_mensaje];
+	char alfabeto[26]="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	if(tam_mensaje>tam_llave){
+		for(i=0;i<tam_llave;i++){
+			//VALIDAR SI HAY ESPACIO
+			if(mensaje[i]==32){
+				//AGREGAR EL ESPACIO A LA LLAVE
+				nueva_llave[i]=32;
+			}else{
+				nueva_llave[i]=llave[i];
+			}
+		}
+
+		i=0;
+		for(j=tam_llave;j<tam_mensaje;j++){
+			//VALIDAR SI HAY ESPACIO
+			if(mensaje[i]==32){
+				//AGREGAR EL ESPACIO A LA LLAVE
+				nueva_llave[i]=32;
+			}else{
+				nueva_llave[j]=mensaje[i];
+			}
+			i++;
+		}
+	}else if(tam_mensaje<tam_llave){
+		for(i=0;i<tam_mensaje;i++){
+			nueva_llave[i]=llave[i];
+		}
+	}else{
+		for(i=0;i<tam_llave;i++){
+			//VALIDAR SI HAY ESPACIO
+			if(mensaje[i]==32){
+				//AGREGAR EL ESPACIO A LA LLAVE
+				nueva_llave[i]=32;
+			}else{
+				nueva_llave[i]=llave[i];
+			}
+                }
+	}
+	i=0;
+	j=0;
+	int tam_nuevallave=strlen(nueva_llave);
+	for(i=0;i<tam_nuevallave;i++){
+		//VALIDAR SI HAY ESPACIO
+		if(nueva_llave[i]!=32){
+			for(j=0;j<26;j++){
+				if(nueva_llave[i]==alfabeto[j]){
+					A[i]=j;
+				}
+			}
+		}else {
+		//SI HAY ESPACIO ESA CASILLA DARLE CUALQUIER VALOR
+			A[i]=69;
+		}
+	}
+	i=0;
+	j=0;
+
+	for(i=0;i<tam_nuevallave;i++){ 
+		//VALIDAR SI HAY ESPACIO
+                if(nueva_llave[i]!=32){
+			for(j=0;j<26;j++){
+				if(mensaje[i]==alfabeto[j]){
+					B[i]=j;
+				}
+			}
+		}else{
+			B[i]=69;
+		}
+        }
+	i=0;
+	j=0;
+	for(i=0;i<tam_nuevallave;i++){
+		if(A[i]!=69){		
+			j=A[i]+B[i];
+			cifrado[i]=alfabeto[j%26];
+		}else if (A[i]==32){
+		//SI HAY ESPACIO EN LA CADENA CIFRADO AGREGAR UN ESPACIO
+			cifrado[i]=32;
+		}
+	}
+	printf("Mensaje cifrado por contraseña: ");
+	printf(cifrado);
+	printf("\n");
+	return cifrado;
 }
+
