@@ -28,25 +28,40 @@ int main(int argc, char **argv){
 		morse(retorno);
 		return 0;
         }
-	printf("Cifrado ciclico\n");
-	printf("Ingrese el mensaje a cifrar: \n");
-	char cadenaCode[TAMANO];
-	scanf("%[a-z A-Z0-9.,@_|°!#$%&\"\\/()*={}]", cadenaCode);
-	printf("Ingrese la clave numerica: \n");
-	int num;
-	scanf("%d", &num);
-	char llave[1024]={0};
-	printf("Introduce llave: ");
-	scanf("%s", llave);
+	char tipo[TAMANO];
+	printf("Ingrese el tipo de cifrado que desea usar (C,A,P):\n");
+	scanf("%s", tipo);
+	
+	if (strcmp(tipo,"C")==0){
+		printf("Cifrado ciclico\n");
+		printf("Ingrese el mensaje a cifrar: \n");
+		char cadenaCode[TAMANO];
+		scanf("%d", tipo);
+		scanf("%[a-z A-Z0-9.,@_|°!#$%&\"\\/()*={}]", cadenaCode);
+		printf("Ingrese la clave numerica: \n");
+		int num;
+		scanf("%d", &num);
+		
+		char* mensajeCifrado;
+		mensajeCifrado=cifrar(cadenaCode,num);
+		printf("Mensaje cifrado: %s \n", mensajeCifrado);
 
-	char* mensajeCifrado;
-	mensajeCifrado=cifrar(cadenaCode,num);
-	printf("Mensaje cifrado: %s \n", mensajeCifrado);
+		printf("Mensaje cifrado en Morse: ");
 
-	printf("Mensaje cifrado en Morse: ");
-
-	morse(mensajeCifrado);
-	cifradoAutollave(cadenaCode,llave);
+		morse(mensajeCifrado);
+	}
+	if (strcmp(tipo,"A")==0){
+		printf("Cifrado ciclico\n");
+		printf("Ingrese el mensaje a cifrar: \n");
+		char cadenaCode[TAMANO];
+		scanf("%d", tipo);
+		scanf("%[a-z A-Z0-9.,@_|°!#$%&\"\\/()*={}]", cadenaCode);
+		char llave[1024]={0};
+		printf("%s \nIntroduce llave: ",cadenaCode);
+		
+		scanf("%s", llave);
+		cifradoAutollave(cadenaCode,llave);
+	}
 
 	return 0;
 }

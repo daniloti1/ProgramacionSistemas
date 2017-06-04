@@ -29,7 +29,8 @@ char* cifrar(char cadena[TAMANO], int n){
 
 char* cifradoAutollave(char* mensaje,char* llave){
 	int i,tam_mensaje,tam_llave;
-	char cifrado[1024];
+	char cifrado[1024]={0};
+	
 	tam_llave=strlen(llave);
 	tam_mensaje=strlen(mensaje);
 	char nuevo_alfabeto[26];
@@ -50,8 +51,8 @@ char* cifradoAutollave(char* mensaje,char* llave){
 			if(mensaje[i]==alfabeto[j]){
 				cifrado[i]=nuevo_alfabeto[j];
 			}
-			if(mensaje[i]==" "){
-				cifrado[i]=" ";
+			if(mensaje[i]==32){
+				cifrado[i]=32;
 			}
 		}
 	}
