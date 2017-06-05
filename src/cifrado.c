@@ -66,7 +66,7 @@ char* cifradoContrasena(char* mensaje,char* llave){
 	char cifrado[1024]={0};
 	tam_llave=strlen(llave);
 	tam_mensaje=strlen(mensaje);
-	char nueva_llave[1024];
+	char nueva_llave[1024]={0};
 	int A[tam_mensaje];
 	int B[tam_mensaje];
 	char alfabeto[26]="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -102,6 +102,7 @@ char* cifradoContrasena(char* mensaje,char* llave){
 			if(mensaje[i]==32){
 				//AGREGAR EL ESPACIO A LA LLAVE
 				nueva_llave[i]=32;
+				strcat("1",llave);
 			}else{
 				nueva_llave[i]=llave[i];
 			}
@@ -110,6 +111,7 @@ char* cifradoContrasena(char* mensaje,char* llave){
 	i=0;
 	j=0;
 	int tam_nuevallave=strlen(nueva_llave);
+
 	for(i=0;i<tam_nuevallave;i++){
 		//VALIDAR SI HAY ESPACIO
 		if(nueva_llave[i]!=32){
@@ -144,7 +146,7 @@ char* cifradoContrasena(char* mensaje,char* llave){
 		if(A[i]!=69){		
 			j=A[i]+B[i];
 			cifrado[i]=alfabeto[j%26];
-		}else if (A[i]==32){
+		}else{
 		//SI HAY ESPACIO EN LA CADENA CIFRADO AGREGAR UN ESPACIO
 			cifrado[i]=32;
 		}
